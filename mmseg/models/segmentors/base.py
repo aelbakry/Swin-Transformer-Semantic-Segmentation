@@ -108,7 +108,7 @@ class BaseSegmentor(nn.Module):
             return self.aug_test(imgs, img_metas, **kwargs)
 
     @auto_fp16(apply_to=('img', ))
-    def forward(self, img, img_metas, return_loss=True, **kwargs):
+    def forward(self, img, **kwargs):
         """Calls either :func:`forward_train` or :func:`forward_test` depending
         on whether ``return_loss`` is ``True``.
 
@@ -118,10 +118,7 @@ class BaseSegmentor(nn.Module):
         should be double nested (i.e.  List[Tensor], List[List[dict]]), with
         the outer list indicating test time augmentations.
         """
-        if return_loss:
-            return self.forward_train(img, img_metas, **kwargs)
-        else:
-            return self.forward_test(img, img_metas, **kwargs)
+        return self.encode_decode(img, **kwargs)
 
     def train_step(self, data_batch, optimizer, **kwargs):
         """The iteration step during training.

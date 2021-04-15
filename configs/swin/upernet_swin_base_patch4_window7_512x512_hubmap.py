@@ -1,11 +1,11 @@
 _base_ = [
-    '../_base_/models/upernet_swin.py', '../_base_/datasets/ade20k.py',
-    '../_base_/default_runtime.py', '../_base_/schedules/schedule_160k.py'
+    '../_base_/models/upernet_swin.py'
 ]
+
 model = dict(
     backbone=dict(
         embed_dim=96,
-        depths=[2, 2, 18, 2],
+        depths=[2, 2, 6, 2],
         num_heads=[3, 6, 12, 24],
         window_size=7,
         ape=False,
