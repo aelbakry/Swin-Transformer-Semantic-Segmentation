@@ -4,9 +4,9 @@ _base_ = [
 
 model = dict(
     backbone=dict(
-        embed_dim=96,
-        depths=[2, 2, 6, 2],
-        num_heads=[3, 6, 12, 24],
+        embed_dim=128,
+        depths=[2, 2, 18, 2],
+        num_heads=[4, 8, 16, 32],
         window_size=7,
         ape=False,
         drop_path_rate=0.3,
@@ -14,10 +14,10 @@ model = dict(
         use_checkpoint=False
     ),
     decode_head=dict(
-        in_channels=[96, 192, 384, 768],
+        in_channels=[128, 256, 512, 1024],
         num_classes=1
     ),
     auxiliary_head=dict(
-        in_channels=384,
+        in_channels=512,
         num_classes=1
     ))

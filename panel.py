@@ -13,4 +13,9 @@ checkpoint = load_checkpoint(model, chk_pth, map_location='cpu')
 
 # print(model)
 import torch
-print(model(torch.zeros((2, 3, 256, 256))).shape)
+print(model(torch.zeros((2, 3, 512, 512))).shape)
+
+# for m, n in model.named_parameters():
+#
+#
+#     print(m)
